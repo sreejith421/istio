@@ -15,6 +15,7 @@ items:
       alb.ingress.kubernetes.io/load-balancer-attributes: routing.http2.enabled=true,idle_timeout.timeout_seconds=4000
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/tags: Environment=qa-dev-stag
+      kubernetes.io/ingress.class: alb
       
     labels:
       app: istio-ingress
