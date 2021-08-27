@@ -1,0 +1,66 @@
+apiVersion: v1
+items:
+- apiVersion: networking.istio.io/v1beta1
+  kind: VirtualService
+  metadata:
+    name: api1-dev
+    namespace: dev
+    
+  spec:
+    gateways:
+    - dev/istio-gateway-dev
+    hosts:
+    - hel.dev.example.com
+    http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          host: api1.dev.svc.cluster.local
+          port:
+            number: 80
+- apiVersion: networking.istio.io/v1beta1
+  kind: VirtualService
+  metadata:
+    name: api2-dev
+    namespace: dev
+  spec:
+    gateways:
+    - dev/istio-gateway-dev
+    hosts:
+    - hel1.dev.example.com
+    http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          host: api2.dev.svc.cluster.local
+          port:
+            number: 80
+- apiVersion: networking.istio.io/v1beta1
+  kind: VirtualService
+  metadata:
+    name: api2-dev
+    namespace: dev
+  spec:
+    gateways:
+    - dev/istio-gateway-dev
+    hosts:
+    - hel3.dev.example.com
+    http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          host: api3.dev.svc.cluster.local
+          port:
+            number: 80
+
+
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
